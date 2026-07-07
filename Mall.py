@@ -4,7 +4,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler 
 
 data = pd.read_csv("Mall_Customers.csv")
-#print(data)
+print(data)
 
 features = ["Annual Income (k$)", "Spending Score (1-100)"]
 
@@ -21,14 +21,14 @@ for k in k_range:
     k_means.fit(x_scaled)
     wcss.append(k_means.inertia_)
     
-#plt.figure(figsize=(8, 5))
-#plt.plot(k_range, wcss, marker='o', linestyle='--', color='b')
-#plt.title('Elbow Method for Optimal K')
-#plt.xlabel('Number of Clusters (K)')
-#plt.ylabel('WCSS (Inertia)')
-#plt.xticks(k_range)
-#plt.grid(True)
-#plt.show ()
+plt.figure(figsize=(8, 5))
+plt.plot(k_range, wcss, marker='o', linestyle='--', color='b')
+plt.title('Elbow Method for Optimal K')
+plt.xlabel('Number of Clusters (K)')
+plt.ylabel('WCSS (Inertia)')
+plt.xticks(k_range)
+plt.grid(True)
+plt.show ()
     
 optimal_k = 5 
 final_kmeans = KMeans(n_clusters=optimal_k, init='k-means++', random_state=42, n_init=10)
